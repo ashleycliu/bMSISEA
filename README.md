@@ -27,8 +27,14 @@ The MSI detection is fulfilled by three steps.
 >>> coverageFilePath <- system.file("example", "test_msi", package = "bmsisea")
 
 >>> msi_threshold <- 15
+
 #Not run: the bamFile is not available
+
 #coverageCaller(bamFile, msi_markers, coverageFilePath)
+
 >>> siteCoverageData <- loadData(paste0(coverageFilePath, "_dis"))
+
 >>> msiOut <- msiDetect(siteCoverageData, msi_baseline, "testSample", msi_threshold)
+
 >>> print(msiOut)
+
