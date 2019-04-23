@@ -3,21 +3,6 @@ bMSISEA：Detection of micro-satellite instability by signiture enrichment analy
 
 The R package bMSISEA detect the status of MSI from ctDNA samples. Studies show a high sensitivity of 93.4% with suffiecient ctDNA content (tumor allele frequency (maxAF) > 0.2%) and larger than 99% specificity. Copyright belongs to Guangzhou Burning Rock Biotech Co., China. This project is free for use by Academic users. Please see enclosed license agreement for details and conditions of use.
 
-Authors:
-Chenglin Liu
-Dependencies:
-Linux system
-Tested on Python 3.2.x
-git
-
-Installation:
-Please ensure the dependencies are installed to the system. 
-
-To install the software to a virtual environment in your current directory, run the following commands:
->>> git clone https://github.com/ashleycliu/bMSISEA.git
->>> cd bMSISEA
-
-
 Required Input files:
 bamFile : plasma sample of interest aligned against reference genome, provided in bam format. 
 msi_markers : MSI marker site file (see example under “inst/example/markerLoci.msi”) - specifies the selected marker loci. User generates this file with baselineConstruction function.
