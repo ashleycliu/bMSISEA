@@ -7,11 +7,10 @@ The R package bMSISEA detect the status of MSI from ctDNA samples. Studies show 
 - bamFile : plasma sample of interest aligned against reference genome, provided in bam format. 
 - msi_markers : MSI marker site file (see example under “inst/example/markerLoci.msi”) - specifies the selected marker loci. User generates this file with baselineConstruction function.
 - msi_baseline : MSI baseline file (see example under “inst/example/baseline.rdata”) - describes statistics of each marker locus, as well as mean and standard deviation of H value of each locus, as calculated from an MSI negative population (white blood cell samples or MSI negative plasma). User generates this file with baselineConstruction function (see below).
-
+- coverageFilePath: the file of coverage data, the ouput file of function coverageCaller and input file for function siteCoverageData
+- msi_threshold : the cutoff of MS_score to determine MSI-H/MSS. 
+- sample name: the name of the plasma sample
  NOTE: Baseline statistics vary markedly from assay-to-assay and lab-to-lab. It is critial that you prepare a baseline file that is specific for your analytic process, and for which data have been generated using the same protocols. Sensitivies is limited using low coverage data. Previous studies has shown a minimum of 5000X is required for targeted sequencing. 
-
-## Other required parameters
-- coverageFilePath: the file of coverage data, the ouput file of function coverageCaller and input file for function siteCoverageData - msi_threshold : the cutoff of MS_score to determine MSI-H/MSS. sample name: the name of the plasma sample
 
 ## Output
 a list of three element:
