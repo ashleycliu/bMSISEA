@@ -33,7 +33,7 @@ print(msiOut)
 ```
 
 ## Baseline construction 
-scripts to construct baseline is avaiable in construct_baseline. 
+scripts to construct baseline is avaiable in baseline_construct. 
 1) Catalog all homo-polymers in your host genome. Several algorithms available to do this, but one we have incorporated in our package is the MSIsensor(PMID:24371154), which is very easy to use. Microsatellites with long repeat length are recommendated.
 2) Limit the list of microsatellites to those presented in your capture design. Location of BED format is required.
 3) Select microsatellite marker loci and construct baseline files. No fewer than 20 neat MSI-H & MSS cell lines or tumor samples with known tumor cell percentage and normal samples are required.
