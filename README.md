@@ -6,7 +6,9 @@ The R package bMSISEA detect the status of MSI from ctDNA samples. Studies show 
 ## Required Input files:
 - bamFile : plasma sample of interest aligned against reference genome, provided in bam format. 
 - msi_markers : MSI marker site file (see example under “inst/example/markerLoci.msi”) - specifies the selected marker loci. User generates this file with baselineConstruction function.
-- msi_baseline : MSI baseline file (see example under “inst/example/baseline.rdata”) - describes statistics of each marker locus, as well as mean and standard deviation of H value of each locus, as calculated from an MSI negative population (white blood cell samples or MSI negative plasma). User generates this file with baselineConstruction function (see below). NOTE: Baseline statistics vary markedly from assay-to-assay and lab-to-lab. It is CRITICAL that you prepare a baseline file that is specific for your analytic process, and for which data have been generated using the same protocols. Sensitivies is limited using low coverage data. Previous studies has shown a minimum of 5000X is required for targeted sequencing.
+- msi_baseline : MSI baseline file (see example under “inst/example/baseline.rdata”) - describes statistics of each marker locus, as well as mean and standard deviation of H value of each locus, as calculated from an MSI negative population (white blood cell samples or MSI negative plasma). User generates this file with baselineConstruction function (see below).
+
+ NOTE: Baseline statistics vary markedly from assay-to-assay and lab-to-lab. It is critial that you prepare a baseline file that is specific for your analytic process, and for which data have been generated using the same protocols. Sensitivies is limited using low coverage data. Previous studies has shown a minimum of 5000X is required for targeted sequencing. 
 
 ## Other required parameters
 - coverageFilePath: the file of coverage data, the ouput file of function coverageCaller and input file for function siteCoverageData - msi_threshold : the cutoff of MS_score to determine MSI-H/MSS. sample name: the name of the plasma sample
@@ -29,4 +31,27 @@ msi_threshold <- 15
 siteCoverageData <- loadData(paste0(coverageFilePath, "_dis"))
 msiOut <- msiDetect(siteCoverageData, msi_baseline, "testSample", msi_threshold)
 print(msiOut)
+```
+
+## Baseline construction 
+scripts to construct baseline is located in inst/baseline_construct. 
+1) Catalog all homo-polymers in your host genome. Several algorithms available to do this, but one we have incorporated in our package is the MSIsensor(PMID:24371154), which is very easy to use. Microsatellites with long repeat length are recommendated.
+2) Limit the list of microsatellites to those presented in your capture design. Location of BED format is required.
+3) Select microsatellite marker loci and construct baseline files. No fewer than 20 neat MSI-H & MSS cell lines or tumor samples with known tumor cell percentage and normal samples are required.
+4) Perform bMSISAE analysis of many normal plasma samples to construct the baseline of H values and cutoff of MS scores.
+5) Incorporate the results of 4) to baseline data.
+
+You can run the script  msi_baseline.sh to construct the baseline.
+```
+Usage:  msi_baseline.sh 
+-r <path to reference genome .fasta/.fa>
+-s <path to baseline construction scripts>
+-o <output path>
+-b <custom_assay_bed>
+-t <output path of msi-h tumor, paired normal coverage file of all covered sites>
+-n <output path of normal/mss coverage file of all covered sites >
+-p <output path of negative plasma coverage file of all covered sites>
+-f <msih_tumor_normal_tumorPercent_file; Header: tumor\tnormal\ttumor_bam\tnormal_bam\tumorPercent>
+-g <mss_normal_list; Header: ID\tbam>
+-i <neg_pla_list; Header: ID\tbam>]
 ```
