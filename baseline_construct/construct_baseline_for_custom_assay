@@ -1,0 +1,7 @@
+Detecting MSI status based on panels other than Burning Rock ColonCore panel, several steps should firstly be performed to establish baseline new panels. 
+
+1) Catalog all homo-polymers in your host genome. Several algorithms available to do this, but one we have incorporated in our package is the MSIsensor(PMID:24371154), which is very easy to use. Microsatellites with long repeat length are recommendated. 
+2) Limit the list of microsatellites to those presented in your capture design. Location of BED format is required.
+3) Select microsatellite marker loci and construct baseline files. No fewer than 20 neat MSI-H & MSS cell lines or tumor samples with known tumor cell percentage and normal samples are required.
+4) Perform bMSISAE analysis of many normal plasma samples to construct the baseline of H values and cutoff of MS scores.
+5) Incorporate the results of 4) to baseline data.
